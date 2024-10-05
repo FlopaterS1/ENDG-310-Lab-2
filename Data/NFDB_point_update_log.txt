@@ -45,7 +45,7 @@ ON:
 - This version includes ON fire point data for years 1959-2023;
 - Fire point data for 1976-2023 have been updated in this version using source data;
 - Note that years 1959-1975 are incomplete as these years include only large fires > 200 ha;
-- Note that the Ontario fire data has been produced by Natural Resources Canada under Licence with the Ontario Ministry of Natural Resources © Queen’s Printer for Ontario, 2024;
+- Note that the Ontario fire data has been produced by Natural Resources Canada under Licence with the Ontario Ministry of Natural Resources Â© Queenâ€™s Printer for Ontario, 2024;
 
 QC: 
 - QC fire data updates downloaded from https://www.donneesquebec.ca/
@@ -128,7 +128,7 @@ ON:
 - This version includes ON fire point data for years 1959-2022;
 - Fire point data for 1976-2022 have been updated in this version using source data;
 - Note that years 1959-1975 are incomplete as these years include only large fires > 200 ha;
-- Note that the Ontario fire data has been produced by Natural Resources Canada under Licence with the Ontario Ministry of Natural Resources © Queen’s Printer for Ontario, 2022;
+- Note that the Ontario fire data has been produced by Natural Resources Canada under Licence with the Ontario Ministry of Natural Resources Â© Queenâ€™s Printer for Ontario, 2022;
 
 QC: 
 - QC fire data updates downloaded from https://www.donneesquebec.ca/
@@ -217,7 +217,7 @@ ON:
 - Fire points for small fires < 40 ha are included for all years 1976-2021;
 - Note that years 1959-1975 are incomplete as these years include only large fires > 200 ha;
 - Note that Ontario fire point data is provided for fires < 40 ha only. Therefore, CFS has generated/included point data for for Ontario fires > 40 ha using the centroid of the provided fire polygon data;
-- Note that the Ontario fire data has been produced by Natural Resources Canada under Licence with the Ontario Ministry of Natural Resources © Queen’s Printer for Ontario, 2022;
+- Note that the Ontario fire data has been produced by Natural Resources Canada under Licence with the Ontario Ministry of Natural Resources Â© Queenâ€™s Printer for Ontario, 2022;
 
 QC:
 - QC fire data updates downloaded from https://www.donneesquebec.ca
@@ -306,7 +306,7 @@ ON:
 - Fire points for small fires < 40 ha are included for all years 1976-2020;
 - Note that years 1959-1975 are incomplete as these years include only large fires > 200 ha;
 - Note that Ontario fire point data is provided for fires < 40 ha only. Therefore, CFS has generated/included point data for for Ontario fires > 40 ha using the centroid of the provided fire polygon data;
-- Note that the Ontario fire data has been produced by Natural Resources Canada under Licence with the Ontario Ministry of Natural Resources © Queen’s Printer for Ontario, 2021;
+- Note that the Ontario fire data has been produced by Natural Resources Canada under Licence with the Ontario Ministry of Natural Resources Â© Queenâ€™s Printer for Ontario, 2021;
 
 QC:
 - QC fire data updates downloaded from https://www.donneesquebec.ca
@@ -411,7 +411,7 @@ ON:
 - Fire points for small fires < 40 ha were updated for all years 1976-2019;
 - Note that years 1959-1975 are incomplete as these years include only large fires > 200 ha;
 - Note that Ontario fire point data is provided for fires < 40 ha only. Therefore, CFS has generated/included point data for for Ontario fires > 40 ha using the centroid of the provided fire polygon data;
-- Note that the Ontario fire data has been produced by Natural Resources Canada under Licence with the Ontario Ministry of Natural Resources © Queen’s Printer for Ontario, 2020;
+- Note that the Ontario fire data has been produced by Natural Resources Canada under Licence with the Ontario Ministry of Natural Resources Â© Queenâ€™s Printer for Ontario, 2020;
 
 QC:
 - QC fire data updates downloaded from https://www.donneesquebec.ca
@@ -501,7 +501,7 @@ ON:
 - This version includes ON fire point data for years 1959-2018;
 - Note that years 1959-1975 are incomplete as these years include only large fires > 200 ha;
 - Note that Ontario fire point data is provided for fires < 40 ha only. CFS has generated/included point data for for Ontario fires > 40 ha using the centroid of the provided fire polygon data;
-- Note that the Ontario fire data has been produced by Natural Resources Canada under Licence with the Ontario Ministry of Natural Resources © Queen’s Printer for Ontario, 2019;
+- Note that the Ontario fire data has been produced by Natural Resources Canada under Licence with the Ontario Ministry of Natural Resources Â© Queenâ€™s Printer for Ontario, 2019;
 
 QC:
 - QC fire data updates downloaded from https://www.donneesquebec.ca
