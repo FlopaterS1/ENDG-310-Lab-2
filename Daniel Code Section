@@ -20,7 +20,7 @@ data_xls["TOTAL HA (ADJUSTED_HA)"] = pd.to_numeric(data_xls["TOTAL HA (ADJUSTED_
 data_xls = data_xls.dropna(subset=["YEAR", "TOTAL HA (ADJUSTED_HA)"])
 
 # Plotting
-plt.figure(figsize=(20,10))
+plt.figure(figsize=(10,6))
 plt.plot(data_csv['decimal date'], data_csv["average"], color="#FF0000", marker = 'o', mec = 'k')
 plt.plot(data_csv['decimal date'], data_csv["deseasonalized"], color="#000000", marker = 's', markersize = '4')
 plt.plot(data_csv['decimal date'], data_csv["deseasonalized"], color="#000000", marker = '|', markersize = '14')
