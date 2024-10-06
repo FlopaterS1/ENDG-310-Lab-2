@@ -1,0 +1,117 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load an Excel file
+xls_file_path = "C:/Users/danie/OneDrive/Documents/Engg 310/FlopaterS1 ENDG-310-Lab-2 main Data/NFDB_point_stats.xlsx"
+data_xls = pd.read_excel(xls_file_path, sheet_name='NFDB_Summary_Stats', skiprows=4)
+
+# Load a CSV file
+csv_file_path = "C:/Users/danie/OneDrive/Documents/Engg 310/FlopaterS1 ENDG-310-Lab-2 main Data/co2_data.csv"
+data_csv = pd.read_csv(csv_file_path, header = 40, skiprows=range(41,771))
+
+# Clean up column names to avoid access issues
+data_csv.columns = data_csv.columns.str.strip()
+
+# Convert to numeric and drop NaN
+data_xls["YEAR"] = pd.to_numeric(data_xls["YEAR"], errors="coerce")
+data_xls["TOTAL HA (ADJUSTED_HA)"] = pd.to_numeric(data_xls["TOTAL HA (ADJUSTED_HA)"], errors="coerce")
+data_xls = data_xls.dropna(subset=["YEAR", "TOTAL HA (ADJUSTED_HA)"])
+
+# Plotting
+plt.figure(figsize=(20,10))
+plt.plot(data_csv['decimal date'], data_csv["average"], color="#FF0000", marker = 'o', mec = 'k')
+plt.plot(data_csv['decimal date'], data_csv["deseasonalized"], color="#000000", marker = 's', markersize = '4')
+plt.plot(data_csv['decimal date'], data_csv["deseasonalized"], color="#000000", marker = '|', markersize = '14')
+
+# Set title and labels
+plt.title("Recent Monthly Mean CO\N{SUBSCRIPT TWO} at Muana Loa Observatory") 
+plt.xlabel("Year")
+plt.ylabel("CO\N{SUBSCRIPT TWO} mole fraction (ppm)")
+
+# Set the scale and grid
+plt.yscale("linear")  
+
+# Show plot
+plt.show()
+
+data_csv = pd.read_csv(csv_file_path, skiprows=40)
+
+# Group the data by year and calculate the average CO2 for each year
+annual_co2 = data_csv.groupby('year')['average'].mean().reset_index()
+
+# Calculate the annual increase in CO2
+annual_co2['annual_increase'] = annual_co2['average'].diff()
+
+# Define summer and winter months
+summer_months = [6, 7, 8]
+winter_months = [12, 1, 2]
+
+# Create a column to classify season
+data_csv['season'] = data_csv['month'].apply(lambda x: 'summer' if x in summer_months else ('winter' if x in winter_months else 'other'))
+
+# Filter out the other seasons
+seasonal_data = data_csv[data_csv['season'].isin(['summer', 'winter'])]
+
+# Group by year and season, then calculate the average CO2 for each season
+seasonal_avg = seasonal_data.groupby(['year', 'season'])['average'].mean().unstack()
+
+# Calculate annual increase in summer and decrease in winter
+seasonal_avg['summer_increase'] = seasonal_avg['summer'].diff()
+seasonal_avg['winter_decrease'] = seasonal_avg['winter'].diff()
+
+# Plotting the CO2 data
+plt.figure(figsize=(10,6))
+plt.yscale("linear")
+plt.grid()  
+plt.bar(annual_co2['year'], annual_co2['annual_increase'], color = "#0C2D48", label = 'Annual Increase')
+
+plt.title("Annual Increase In CO₂ per Year") 
+plt.xlabel("Year")
+plt.ylabel("CO₂ Increase in mole fraction (ppm)")
+
+plt.legend(loc = 'upper left')
+
+plt.show()
+
+plt.figure(figsize=(10,6))
+plt.plot(annual_co2['year'], seasonal_avg['summer_increase'], color = "#FF4E50", label = 'Summer Increase')
+plt.plot(annual_co2['year'], seasonal_avg['winter_decrease'], color = "#5098b3", label = 'Winter Decrease')
+
+plt.title("Annual Increase In CO₂ per Year") 
+plt.xlabel("Year")
+plt.ylabel("CO₂ Increase in mole fraction (ppm)")
+plt.grid()
+
+plt.legend(loc = 'upper left')
+plt.show()
+
+merged_data = pd.merge(data_xls[['YEAR', 'TOTAL HA (ADJUSTED_HA)']], annual_co2[['year', 'annual_increase']], left_on='YEAR', right_on='year')
+
+
+fig, ax1 = plt.subplots(figsize=(10, 6))
+
+# Plot Total Adjusted HA on the primary y-axis
+ax1.plot(merged_data['YEAR'], merged_data['TOTAL HA (ADJUSTED_HA)'], color="#0C2D48", label='Total Adjusted HA')
+ax1.set_xlabel("Year")
+ax1.set_ylabel("Total Adjusted HA (in hectares)", color="#0C2D48")
+ax1.tick_params(axis='y', labelcolor="#0C2D48")
+
+# Create a secondary y-axis
+ax2 = ax1.twinx()
+ax2.plot(merged_data['YEAR'], merged_data['annual_increase'], color="#FF4E50", label='Annual CO₂ Increase')
+ax2.set_ylabel("Annual CO₂ Increase (ppm)", color="#FF4E50")
+ax2.tick_params(axis='y', labelcolor="#FF4E50")
+
+# Set titles and show grid
+plt.title("Comparison of Total Adjusted HA and Annual CO₂ Increase")
+ax1.grid()
+
+# Optionally add legends for both axes
+lines, labels = ax1.get_legend_handles_labels()
+lines2, labels2 = ax2.get_legend_handles_labels()
+ax2.legend(lines + lines2, labels + labels2, loc='upper left')
+
+# Display the plot
+plt.show()
